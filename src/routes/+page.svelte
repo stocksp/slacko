@@ -1,59 +1,60 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+    /** @type {import('./$types').PageData} */
+    export let data;
+
+    /**
+     * Converts Unix timestamp to a readable date string
+     * @param {string} timestamp - Unix timestamp in seconds
+     * @returns {string} Formatted date string
+     */
+    function formatDate(timestamp) {
+        const date = new Date(parseFloat(timestamp) * 1000);
+        return date.toLocaleString();
+    }
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<main>
+    <h1>Messages</h1>
+    <ul>
+        {#each data.messages as message}
+            <li>
+                <div class="message-header">
+                    <span class="user">{message.user}</span>
+                    <span class="timestamp">{formatDate(message.ts)}</span>
+                </div>
+                <div class="message-text">{message.text}</div>
+            </li>
+        {/each}
+    </ul>
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-	h1 {
-		width: 100%;
-	}
+    li {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 1rem;
+    }
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+    .message-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+    .user {
+        font-weight: bold;
+    }
+
+    .timestamp {
+        color: #666;
+    }
+
+    .message-text {
+        white-space: pre-wrap;
+    }
 </style>
