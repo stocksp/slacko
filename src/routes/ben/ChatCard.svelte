@@ -114,27 +114,27 @@
 
 <style>
   .card {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .card-header {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .scroll-area {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .card-content {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .avatar {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .avatar-image {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .avatar-fallback {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
   .card-footer {
-    /* Add your styles here */
+    /* Add additional styles here */
   }
 </style>
